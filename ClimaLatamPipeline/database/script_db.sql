@@ -43,3 +43,11 @@ INSERT INTO Dim_Indicador (IdIndicador, Nombre) VALUES
 ('AG.LND.FRST.ZS', 'Área selvática/boscosa (% del área de tierra)'),
 ('EN.ATM.PM25.MC.M3', 'Exposición a contaminación del aire (PM2.5)');
 GO
+
+INSERT INTO dim_pais (IdPais, Nombre) 
+VALUES 
+('ARG', 'Argentina'),
+('BRA', 'Brasil'),
+('CHL', 'Chile'),
+('COL', 'Colombia'),
+('MEX', 'México');
