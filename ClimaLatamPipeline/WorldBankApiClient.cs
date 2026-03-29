@@ -16,7 +16,7 @@ namespace ClimaLatamPipeline
         public WorldBankApiClient()
         {
             _httpClient = new HttpClient();
-            _httpClient.Timeout = TimeSpan.FromSeconds(30);
+            _httpClient.Timeout = TimeSpan.FromSeconds(90);
         }
 
         public async Task<string> ExtraerDatosAmbientalesAsync(string indicadorId)

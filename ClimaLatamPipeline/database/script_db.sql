@@ -38,7 +38,7 @@ CREATE TABLE fact_metrica(
 GO
 
 INSERT INTO Dim_Indicador (IdIndicador, Nombre) VALUES 
-('EN.ATM.CO2E.PC', 'Emisiones de CO2 (toneladas per cápita)'),
+('EN.GHG.CO2.PC.CE.AR5', 'Emisiones de CO2 (toneladas per cápita)'),
 ('EG.FEC.RNEW.ZS', 'Consumo de energía renovable (% del total)'),
 ('AG.LND.FRST.ZS', 'Área selvática/boscosa (% del área de tierra)'),
 ('EN.ATM.PM25.MC.M3', 'Exposición a contaminación del aire (PM2.5)');
