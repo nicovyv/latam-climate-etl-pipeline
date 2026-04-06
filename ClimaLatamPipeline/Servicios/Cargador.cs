@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
+using Npgsql;
 using ClimaLatamPipeline.Modelos;
 
 namespace ClimaLatamPipeline.Servicios;
@@ -30,7 +30,7 @@ internal class Cargador
 
         try
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
             {
                 connection.Open();
                 Console.WriteLine("Conexión a la base de datos establecida.");
@@ -43,7 +43,7 @@ internal class Cargador
                             $"Procesando registro: País={dato.CodigoPais}, Indicador={dato.Indicador.Id}, Año={dato.Anio}, Valor={dato.Valor}");
 
 
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@IdPais", dato.CodigoPais);
                             command.Parameters.AddWithValue("@IdIndicador", dato.Indicador.Id);
@@ -80,14 +80,14 @@ internal class Cargador
 
         try
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
             {
                 connection.Open();
                 Console.WriteLine("Conexión a la base de datos establecida.");
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
