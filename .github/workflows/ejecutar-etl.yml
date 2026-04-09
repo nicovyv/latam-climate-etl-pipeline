@@ -13,18 +13,20 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '10.0.x'
 
     - name: Restore dependencies
       run: dotnet restore
-
     - name: Build the project
+      run: dotnet build ClimaLatamPipeline/ClimaLatamPipeline.csproj --configuration Release
+    
+    - name: Run the project
       env:
         NEON_CONNECTION_STRING: ${{ secrets.NEON_CONNECTION_STRING }}
-      run: dotnet build --project ClimaLatamPipeline/ClimaLatamPipeline.csproj
+      run: dotnet run --project ClimaLatamPipeline/ClimaLatamPipeline.csproj --no-build
 
