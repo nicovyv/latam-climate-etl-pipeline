@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
     <PackageReference Include="Npgsql" Version="10.0.2" />
   </ItemGroup>
@@ -17,6 +18,10 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\ejecutar-etl.yml" />
   </ItemGroup>
 
 </Project>

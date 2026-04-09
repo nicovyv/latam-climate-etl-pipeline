@@ -6,16 +6,26 @@ using ClimaLatamPipeline.Modelos;
 using ClimaLatamPipeline.Servicios;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
 
 Console.WriteLine("Iniciando Pipiline de Datos ambientales de latam.");
 
 
 
 IConfiguration configuration = new ConfigurationBuilder()
-	.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-	.Build();
+	.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+	.AddEnvironmentVariables()
+    .Build();
 
-string? cadenaConexion = configuration.GetConnectionString("climaLatamDB");
+
+string? cadenaConexion = Environment.GetEnvironmentVariable("NEON_CONNECTION_STRING")
+						?? configuration.GetConnectionString("climaLatamDB");
+
+if (string.IsNullOrEmpty(cadenaConexion)) 
+{
+	Console.WriteLine("Error: No se encontró la cadena de conexión a la base de datos. Asegúrese de configurar la variable de entorno 'NEON_CONNECTION_STRING' o el archivo 'appsettings.json'.");
+	return;
+}
 
 var apiClient = new WorldBankApiClient();
 var transformador = new Transformador();
