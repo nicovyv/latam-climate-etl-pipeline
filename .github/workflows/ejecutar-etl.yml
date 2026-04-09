@@ -22,11 +22,9 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build the project
-      run: dotnet build ClimaLatamPipeline/ClimaLatamPipeline.csproj --configuration Release
-    
-    - name: Run the project
       env:
         NEON_CONNECTION_STRING: ${{ secrets.NEON_CONNECTION_STRING }}
-      run: dotnet run --project ClimaLatamPipeline/ClimaLatamPipeline.csproj --no-build
+      run: dotnet run --project ClimaLatamPipeline/ClimaLatamPipeline.csproj --nconfiguration Release
 
