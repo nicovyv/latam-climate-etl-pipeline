@@ -76,6 +76,6 @@ foreach (string indicador in indicadores)
 
 
 Console.WriteLine("Fin del Proceso");
-Console.ReadKey();
+//Console.ReadKey();
 
 
