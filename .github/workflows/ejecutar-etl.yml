@@ -26,5 +26,5 @@ jobs:
     - name: Build the project
       env:
         NEON_CONNECTION_STRING: ${{ secrets.NEON_CONNECTION_STRING }}
-      run: dotnet run --project ClimaLatamPipeline/ClimaLatamPipeline.csproj --nconfiguration Release
+      run: dotnet run --project ClimaLatamPipeline/ClimaLatamPipeline.csproj --configuration Release
 
